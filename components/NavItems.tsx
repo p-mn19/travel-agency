@@ -1,5 +1,6 @@
-import { Link } from "react-router";
+import { Link, NavLink } from "react-router";
 import { sidebarItems } from "~/constants";
+import { cn } from "~/lib/utils";
 
 const NavItems=()=>{
     return(
@@ -12,7 +13,15 @@ const NavItems=()=>{
             <div className="container">
                 <nav>
                 {sidebarItems.map(({id,href,icon,label})=>(
-                    <div>{label}</div>
+                    <NavLink to={href} key={id}>
+                        {({isActive}:{isActive: boolean})=>(
+                            <div className={cn('group nav-item',{
+                                'bg-primary-100 !text-white':isActive
+                            })}>
+                                {label}
+                            </div>
+                        )}
+                    </NavLink>
                 ))}
                 </nav>
             </div>
