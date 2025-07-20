@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import { sidebarItems } from "~/constants";
 
 const NavItems=()=>{
     return(
@@ -8,6 +9,13 @@ const NavItems=()=>{
             className="size-[30px]"/>
             <h1>VoyageHub</h1>
             </Link>
+            <div className="container">
+                <nav>
+                {sidebarItems.map(({id,href,icon,label})=>(
+                    <div>{label}</div>
+                ))}
+                </nav>
+            </div>
         </section>
     )
 }
